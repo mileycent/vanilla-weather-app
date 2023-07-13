@@ -11,6 +11,7 @@
 <body>
     <div class="container">
    <div class="weather-border">
+    <div class="overview">
     <h1>Beirut</h1>
     <ul>
         <li>
@@ -20,8 +21,12 @@
     </ul>
     <div class="row">
         <div class="col-6">
+            <div class="d-flex weather-temperature">
              <img src="icons8-rain-48.png" alt="clear"> 
-             14°C |  °F         
+             <div class="float-right">
+             <strong id="temperature">14</strong><span><small class="units">°C | °F</small></span>        
+            </div>
+            </div>
         </div>
         <div class="col-6">
             <ul>
@@ -35,6 +40,7 @@
                     WInd: 2km/h
                 </li>
             </ul>
+        </div>
         </div>
     </div>
     <a href=""    class="btn btn-primary">Click Here</a>

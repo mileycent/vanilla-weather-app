@@ -26,6 +26,25 @@ ul {
     margin: 0;
     padding: 0;
 }
+strong {
+    margin-bottom: 30px;
+
+}
+.weather-temperature .units{
+    position: relative;
+    top: -20px;
+}
+.weather-temperature img {
+    margin-left: 10px;
+    height: 100px;
+    width: 90px;
+}
+.weather-temperature strong {
+    color:#0f130f;
+    font-size: 44px;
+    line-height: 1;
+    font-weight: 100;
+}
 p {
     padding-top: 20px;
     padding-bottom: 0;
