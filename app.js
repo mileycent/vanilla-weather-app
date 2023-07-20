@@ -42,7 +42,6 @@ function displayCurrentTemperature(response) {
 }
 function search(city) {
   let apiKey = "6a48a550fc04f170639e60d52b8a6bc5";
-  let city = "Mozambique";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayCurrentTemperature);
 }
@@ -50,7 +49,7 @@ function search(city) {
 function handleSubmit(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#city-input"); 
-  console.log(cityInputElement.value);
+  search(cityInputElement.value);
 }
 
 search("New York");
