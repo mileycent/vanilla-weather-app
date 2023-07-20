@@ -40,8 +40,20 @@ function displayCurrentTemperature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
 }
-let apiKey = "6a48a550fc04f170639e60d52b8a6bc5";
-let city = "Mozambique";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-console.log(apiUrl);
-axios.get(apiUrl).then(displayCurrentTemperature);
+function search(city) {
+  let apiKey = "6a48a550fc04f170639e60d52b8a6bc5";
+  let city = "Mozambique";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayCurrentTemperature);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input"); 
+  console.log(cityInputElement.value);
+}
+
+search("New York");
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
