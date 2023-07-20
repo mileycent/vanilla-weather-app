@@ -17,8 +17,13 @@ if (hours < 10) {
 
 function displayCurrentTemperature(response) {
 
+
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  temperatureElement.innerHTML = Math.round(celsuisTemperature);
+
+  let celsuisTemperature = response.data.main.temp;
+
+
   // to change the city written in html doc to API version 
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML =  response.data.name;
@@ -52,7 +57,30 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 
-search("New York");
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let fahrenheitTemperature = (celsuisTemperature * 9) / 5 + 32;
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+
+}
+
+function displayCelsuisTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsuisTemperature);
+}
+ 
+let celsuisTemperature = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celsuisLink = document.querySelector("#celsuis-link");
+celsuisLink.addEventListener("click", displayCelsuisTemperature);
+
+
+search("New York");
