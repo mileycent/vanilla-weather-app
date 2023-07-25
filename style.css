@@ -40,6 +40,16 @@ strong {
     height: 100px;
     width: 90px;
 }
+.weather-forcast {
+    margin-top: 20px;
+    text-align: center;
+}
+.weather-temperature .active:hover {
+    color:blueviolet;
+    text-decoration: none;
+    
+
+}
 .weather-temperature strong {
     color:#0f130f;
     font-size: 44px;
