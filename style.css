@@ -37,12 +37,15 @@ strong {
 }
 .weather-temperature img {
     margin-left: 10px;
-    height: 100px;
-    width: 90px;
+    height: 70px;
+    width: 70px;
 }
 .weather-forcast {
     margin-top: 20px;
     text-align: center;
+}
+.weather-forcast-temperature {
+    
 }
 .weather-temperature .active:hover {
     color:blueviolet;

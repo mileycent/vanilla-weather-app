@@ -14,6 +14,42 @@ if (hours < 10) {
   return `${day} | ${hours}:${minutes}`;
 }
 
+function displayForcast(response) {
+  console.log(response.data);
+  let forcastElement = document.querySelector("#forcast");
+
+  let forcastHTML = `<div class="row>`;
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  days.forEach(function (day) {
+
+    forcastHTML = forcastHTML + `
+  <div class="col-2">
+     <div class="weather-forcast-day">${day}</div>
+      <img src="icons8-rain-48.png" alt="clear" width="46"/>
+     <div class="weather-forcast-temperature">
+      <span class="weather-forcast-temperature-max">18°</span>
+      <span class="weather-forcast-temperature-min">12°</span>
+  </div>
+</div>`;
+  });
+
+
+  
+
+
+
+  forcastElement.innerHTML = forcastHTML;
+
+}
+
+function getForcast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "6a48a550fc04f170639e60d52b8a6bc5";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForcast);
+}
+
 
 function displayCurrentTemperature(response) {
 
@@ -21,7 +57,7 @@ function displayCurrentTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celsuisTemperature);
 
-  let celsuisTemperature = response.data.main.temp;
+  celsuisTemperature = response.data.main.temp;
 
 
   // to change the city written in html doc to API version 
@@ -44,6 +80,8 @@ function displayCurrentTemperature(response) {
   // to change the alternative icon text
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
+  getForcast(response.data.coord);
+
 }
 function search(city) {
   let apiKey = "6a48a550fc04f170639e60d52b8a6bc5";
@@ -54,7 +92,7 @@ function search(city) {
 function handleSubmit(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#city-input"); 
-  search(cityInputElement.value);
+  search(cityInputElement.value);   
 }
 
 function displayFahrenheitTemperature(event) {
@@ -85,6 +123,7 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 let celsuisLink = document.querySelector("#celsuis-link");
 celsuisLink.addEventListener("click", displayCelsuisTemperature);
+
 
 
 search("New York");
